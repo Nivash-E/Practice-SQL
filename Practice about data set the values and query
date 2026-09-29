@@ -1,0 +1,89 @@
+create database LearnSql;
+
+use learnsql;
+
+create table students(
+studentid int auto_increment primary key,
+firstname varchar(50),
+lastname varchar(50),
+birthdate date,
+gender varchar(10));
+
+create table courses(
+courseid int auto_increment primary key,
+coursename varchar(50),
+credits int);
+
+create table payment(
+paymentid int auto_increment primary key,
+paymentdate date
+);
+
+create table enrollment(
+enrollmentid int auto_increment primary key,
+studentid int,
+courseid int,
+enrollmentdate date,
+paymentid int,
+foreign key(studentid) references students(studentid),
+foreign key(courseid) references courses(courseid),
+foreign key(paymentid) references payment(paymentid));
+
+Insert into students(firstname,lastname,birthdate,gender)
+values
+('Nivash', 'Elango', '2006-05-14', 'Male'),
+('Arun', 'Kumar', '2005-08-21', 'Male'),
+('Priya', 'Sharma', '2006-02-10', 'Female'),
+('Rahul', 'Raj', '2005-11-25', 'Male'),
+('Divya', 'Suresh', '2006-07-18', 'Female'),
+('Karthik', 'Mohan', '2005-04-12', 'Male'),
+('Anitha', 'Devi', '2006-09-30', 'Female'),
+('Vignesh', 'Ravi', '2005-12-05', 'Male'),
+('Swetha', 'Kumar', '2006-03-22', 'Female'),
+('Sanjay', 'Prakash', '2005-06-15', 'Male');
+
+Insert Into courses(coursename,credits)
+values
+('Computer sciencew','3'),
+('Data Structures', 4),
+('Database Management System', 3),
+('Operating Systems', 4),
+('Computer Networks', 3),
+('Web Development', 3),
+('Software Engineering', 4),
+('Java Programming', 3),
+('Machine Learning', 4),
+('Cloud Computing', 3);
+
+Insert Into payment(paymentdate)
+values
+('2026-01-10'),
+('2026-01-15'),
+('2026-02-05'),
+('2026-02-18'),
+('2026-03-10'),
+('2026-03-25'),
+('2026-04-12'),
+('2026-05-08'),
+('2026-06-20'),
+('2026-07-15');
+
+
+INSERT INTO enrollment(studentid, courseid, enrollmentdate, paymentid)
+VALUES
+(1, 1, '2026-01-10', 1),
+(2, 2, '2026-01-15', 2),
+(3, 3, '2026-02-05', 3),
+(4, 4, '2026-02-18', 4),
+(5, 5, '2026-03-10', 5),
+(6, 6, '2026-03-25', 6),
+(7, 7, '2026-04-12', 7),
+(8, 8, '2026-05-08', 8),
+(9, 9, '2026-06-20', 9),
+(10, 10, '2026-07-15', 10);
+
+select * from students;
+
+select *from courses;
+
+select firstname,lastname from students;
